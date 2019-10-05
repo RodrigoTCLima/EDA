@@ -1,4 +1,5 @@
 #include <stdio.h>
+
 int hanoi(int N, int Orig, int Dest, int Temp, int Cont){
 	if(N <= 1) {
 		Cont++;
@@ -8,6 +9,7 @@ int hanoi(int N, int Orig, int Dest, int Temp, int Cont){
 	Cont++;
 	return Cont;
 }
+
 int main(){
 	int a, i=1;
 		while(scanf("%d", &a), a){
