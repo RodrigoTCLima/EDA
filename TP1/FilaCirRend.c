@@ -2,29 +2,29 @@
 #include <stdlib.h>
 
 int N = 100, p, u;
-int *filaCirRend;
+int *fila;
 
 int cria_fila(){
     p=0;
     u=0;
-    filaCirRend =  malloc(N*sizeof(int));
-    if(filaCirRend == NULL) return 0;
+    fila =  malloc(N*sizeof(int));
+    if(fila == NULL) return 0;
     return 1;
 }
 
 int redimenciona(){
     int i,j;
-    filaCirRend = realloc(filaCirRend, 2*N*sizeof(int));
-    if(filaCirRend == NULL) return 0;
+    fila = realloc(fila, 2*N*sizeof(int));
+    if(fila == NULL) return 0;
     if(p > u){
         if(N-p>u){
             for(int i=0, j=N; i<u; i++,j++)
-                filaCirRend[j]=filaCirRend[i];
+                fila[j]=fila[i];
             u = N+u;
         }
         else{
             for (i = N-1, j=2*N-1; i >=p; i--, j--)
-                filaCirRend[j]=filaCirRend[i];
+                fila[j]=fila[i];
             p = j+1;
         }
     }
@@ -35,14 +35,14 @@ int redimenciona(){
 int enfileira(int x){
     if((u+1)%N == p){
         if(redimenciona()){
-            filaCirRend[u]=x;
+            fila[u]=x;
             u=(u+1)%N;
             return 1;
         }
         return 0;
     }
     else{
-        filaCirRend[u]=x;
+        fila[u]=x;
         u=(u+1)%N;
         return 1;
     }
@@ -50,7 +50,7 @@ int enfileira(int x){
 
 int desenfileira(int *x){
     if(p==u) return 0;
-    *x = filaCirRend[p];
+    *x = fila[p];
     p=(p+1)%N;
     return 1;
 }
@@ -64,8 +64,8 @@ int fila_tam(){
     return u-p;
 }
 int destroi_fila(){
-    if(filaCirRend == NULL) return 0;
+    if(fila == NULL) return 0;
     for(int i=N-1; i>=0; i--)
-        free(filaCirRend[i]);
+        free(fila[i]);
     return 1;
 }

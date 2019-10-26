@@ -6,47 +6,47 @@ typedef struct celula{
     struct celula *prox;    
 }celula;
 
-celula *filaLista;
+celula *fila;
 
 int cria_fila(){
-    filaLista = malloc(sizeof(celula));
-    if(filaLista == NULL) return 0;
-    filaLista -> prox = filaLista;
+    fila = malloc(sizeof(celula));
+    if(fila == NULL) return 0;
+    fila -> prox = fila;
     return 1;
 }
 
 int enfileira(int x){
     celula *novo = malloc (sizeof(celula));
     if(novo == NULL) return 0;
-    novo -> prox = filaLista -> prox;
-    filaLista ->prox = novo;
-    filaLista->dado = x;
-    filaLista = novo;
+    novo -> prox = fila -> prox;
+    fila ->prox = novo;
+    fila->dado = x;
+    fila = novo;
     return 1;
 }
 
 int desenfileira(int *x){
-    if(filaLista->prox = filaLista) return 0;
-    celula *lixo = filaLista->prox;
+    if(fila->prox = fila) return 0;
+    celula *lixo = fila->prox;
     *x = lixo->dado;
-    filaLista -> prox = lixo -> prox;
+    fila -> prox = lixo -> prox;
     free(lixo);
     return 1;  
 }
 
 int fila_vazia(){
-    if(filaLista->prox = filaLista) return 1;
+    if(fila->prox = fila) return 1;
     return 0;
 }
 int fila_tam(){
     int i;
-    celula *j = filaLista;
-    for(int i=0; j->prox!=filaLista; j=j->prox, i++);
+    celula *j = fila;
+    for(int i=0; j->prox!=fila; j=j->prox, i++);
     return i;
 }
 int destroi_fila(){
     int elem;
     while(desenfileira(&elem));
-    free(filaLista);
+    free(fila);
     return 1;
 }

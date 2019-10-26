@@ -3,24 +3,24 @@
 
 #define N 1100
 
-int *filaVecF;
+int *fila;
 int p, u;
 int cria_fila(){
-    filaVecF = malloc(N*sizeof(int));
-    if(filaVecF == NULL) return 0;
+    fila = malloc(N*sizeof(int));
+    if(fila == NULL) return 0;
     p = 0;
     u = 0;
     return 1;
 }
 int enfileira(int x){
     if(u==N) return 0;
-    filaVecF[u] = x;
+    fila[u] = x;
     u++;
     return 1;
 }
 int desenfileira(int *x){
     if(p==u) return 0;
-    *x = filaVecF[p];
+    *x = fila[p];
     p++;
     if(p==u){
         p = 0;
@@ -40,9 +40,9 @@ int fila_tam(){
     return u-p;
 }
 int destroi_fila(){
-    if(filaVecF==NULL) return 0;
+    if(fila==NULL) return 0;
     for(int i=N-1; i>=0;i--){
-        free(filaVecF[i]);
+        free(fila[i]);
     }
     return 1;
 }
