@@ -1,7 +1,7 @@
 #include "FilaCirRend.h"
 #include <stdlib.h>
 
-int N = 10, p, u;
+int N = 5, p, u;
 int *fila;
 
 int cria_fila(){
@@ -72,10 +72,13 @@ int destroi_fila(){
 void imprime_fila(){
     int j = 0;
     for(;j < N; j++){
-        
+        if(j==0) printf(" ------");
+        else if(j+1==N) printf("------ \n");
+        else printf("------");
     }
     for (j = p; j != u; j=(j+1)%N){
-
+        printf("| %03d ", fila[j]);
     }
+    printf("|\n");
     
 }

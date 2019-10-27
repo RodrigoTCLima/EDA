@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include "FilaVecF.h"
 
-#define N 1100
+#define N 5
 
 int *fila;
 int p, u;

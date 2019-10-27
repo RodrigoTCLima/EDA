@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include "FilaCirRend.h"
 
 int main(){
     char op;
@@ -14,7 +15,7 @@ int main(){
         if(op=='1'){
             printf("Digite quantos elementos você deseja inserir: ");
             scanf("%d", &qtdElem);
-            for(i=0; i < qtdElem && resultado = 1; i++){
+            for(i=0; i < qtdElem && resultado == 1; i++){
                 scanf("%d", elem);
                 resultado = enfileira(elem);
             }
@@ -25,7 +26,7 @@ int main(){
         else if(op == '2'){
             printf("Digite quantos elementos você deseja remover: ");
             scanf("%d", &qtdElem);
-            for(i=0; i<qtdElem && resultado = 1; i++){
+            for(i=0; i<qtdElem && resultado == 1; i++){
                 resultado = desenfileira(&elem);
                 printf("Elemento %d foi removido da fila", elem);
             }
@@ -33,7 +34,9 @@ int main(){
                 printf("Fila Vazia.\n");
             }
         }
-        else if(op == '3'){}
+        else if(op == '3'){
+            imprime_fila();
+        }
         else if(op == '4'){}
         else if(op == '5'){}
         else if(op == '6')
