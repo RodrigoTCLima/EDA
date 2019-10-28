@@ -9,14 +9,13 @@ int main(){
     while(1){
         printf("\033[2J\033[1;1H");
         printf("Tabela de comandos:\n1 - Inserir n elementos na fila\n2 - Remover n elementos da fila\n"
-        "3 - Imprimir a fila\n4 - Reiniciar a fila\n5 - Instruções básicas de como"
-        " usar os comandos\n6 - Sair\n");
+        "3 - Imprimir a fila\n4 - Reiniciar a fila\n5 - Sair\n");
         scanf("%c%*c", &op);
         if(op=='1'){
             printf("Digite quantos elementos você deseja inserir: ");
             scanf("%d", &qtdElem);
             for(i=0; i < qtdElem && resultado == 1; i++){
-                scanf("%d", elem);
+                scanf("%d", &elem);
                 resultado = enfileira(elem);
             }
             if(resultado == 0){
@@ -28,19 +27,33 @@ int main(){
             scanf("%d", &qtdElem);
             for(i=0; i<qtdElem && resultado == 1; i++){
                 resultado = desenfileira(&elem);
-                printf("Elemento %d foi removido da fila", elem);
+                if(resultado == 1){
+                    printf("Elemento %d foi removido da fila.\n", elem);
+                    scanf("%*c");    
+                }
             }
             if(resultado == 0){
                 printf("Fila Vazia.\n");
+                scanf("%*c");  
             }
         }
         else if(op == '3'){
             imprime_fila();
         }
-        else if(op == '4'){}
-        else if(op == '5'){}
-        else if(op == '6')
+        else if(op == '4'){
+            if(destroi_fila())
+                if(cria_fila())
+                    printf("Fila reiniciada.\n");
+        }
+        else if(op == '5'){
             break;
+            destroi_fila();
+        }
+        else{
+            printf("Opção inválida\n");
+        }
+        printf("Pressione enter.\n");
+        scanf("%*c");
     }
     return 0;
 }

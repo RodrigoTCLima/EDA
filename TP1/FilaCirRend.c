@@ -33,7 +33,7 @@ int redimenciona(){
 }
 
 int enfileira(int x){
-    if((u+1)%N == p){
+    if(((u+1)%N) == p){
         if(redimenciona()){
             fila[u]=x;
             u=(u+1)%N;
@@ -78,7 +78,38 @@ void imprime_fila(){
     }
     for (j = p; j != u; j=(j+1)%N){
         printf("| %03d ", fila[j]);
+    }if(fila_vazia()){
+        for(j = 0; j<N; j++){
+            printf("|     ");
+        }
     }
-    printf("|\n");
+    else{
+        for(;j!=p && j!=N; j++){
+            printf("|     ");
+        }      
+    }
+    printf(" |\n");
+    for(j=0;j < N; j++){
+        if(j==0) printf(" ------");
+        else if(j+1==N) printf("------ \n");
+        else printf("------");
+    }
+    if(p!=u){
+        for(j = 0; j<N;j++){
+            if(j==0) printf("   ");
+            if(p==j) printf("p  ");
+            if(u==j) printf("   u");
+            if(j!= u && j!=p) printf("      ");
+        }
+        printf("\n");
+    }
+    else{
+        for(j = 0; j<N;j++){
+            if(p==j) printf("  p u ");
+            if(j!= u && j!=p) printf("      ");
+        }
+        printf("\n");
+    }
+    
     
 }
