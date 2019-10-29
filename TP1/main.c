@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "FilaVecF.h"
+#include "FilaLista.h"
 
 int main(){
     char op;
@@ -16,6 +16,7 @@ int main(){
             printf("Digite quantos elementos você deseja inserir: ");
             scanf("%d", &qtdElem);
             for(i=1; i <= qtdElem && resultado == 1; i++){
+                printf("SE VOCÊ PEDIU ISSO, VOCÊ É UM FRESCO. AGORA DIGITE A MERDA DO NÚMERO QUE VOCÊ QUER:");
                 scanf("%d", &elem);
                 resultado = enfileira(elem);
             }

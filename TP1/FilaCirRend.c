@@ -1,4 +1,5 @@
 #include "FilaCirRend.h"
+#include <stdio.h>
 #include <stdlib.h>
 
 int N = 5, p, u;
@@ -64,7 +65,6 @@ int fila_tam(){
     return u-p;
 }
 int destroi_fila(){
-    if(fila == NULL) return 0;
     for(int i=N-1; i>=0; i--)
         free(fila[i]);
     return 1;
