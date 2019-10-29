@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "FilaLista.h"
+#include "FilaVecF.h"
 
 int main(){
     char op;
@@ -48,8 +48,8 @@ int main(){
                     printf("Fila reiniciada.\n");
         }
         else if(op == '5'){
-            break;
             destroi_fila();
+    	    break;
         }
         else{
             printf("Opção inválida\n");
