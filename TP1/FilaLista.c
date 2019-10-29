@@ -27,7 +27,7 @@ int enfileira(int x){
 }
 
 int desenfileira(int *x){
-    if(fila->prox = fila) return 0;
+    if(fila->prox == fila) return 0;
     celula *lixo = fila->prox;
     *x = lixo->dado;
     fila -> prox = lixo -> prox;
