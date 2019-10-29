@@ -53,6 +53,10 @@ int desenfileira(int *x){
     if(p==u) return 0;
     *x = fila[p];
     p=(p+1)%N;
+    if(p == u){
+        p=0;
+        u=0;
+    }
     return 1;
 }
 
@@ -65,8 +69,9 @@ int fila_tam(){
     return u-p;
 }
 int destroi_fila(){
-    for(int i=N-1; i>=0; i--)
+    for(int i=N-1; i>0; i--)
         free(fila[i]);
+    free(fila);
     return 1;
 }
 void imprime_fila(){
@@ -76,8 +81,9 @@ void imprime_fila(){
         else if(j+1==N) printf("------ \n");
         else printf("------");
     }
-    for (j = p; j != u; j=(j+1)%N){
-        printf("| %03d ", fila[j]);
+    for (j = 0; j != u; j=(j+1)%N){
+        if(j<p)printf("|      ");
+        else printf("| %03d ", fila[j]);
     }if(fila_vazia()){
         for(j = 0; j<N; j++){
             printf("|     ");
@@ -109,7 +115,5 @@ void imprime_fila(){
             if(j!= u && j!=p) printf("      ");
         }
         printf("\n");
-    }
-    
-    
+    }   
 }

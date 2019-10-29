@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "FilaLista.h"
+#include "FilaCirRend.h"
 
 int main(){
     char op;
@@ -16,7 +16,7 @@ int main(){
             printf("Digite quantos elementos você deseja inserir: ");
             scanf("%d", &qtdElem);
             for(i=1; i <= qtdElem && resultado == 1; i++){
-                printf("SE VOCÊ PEDIU ISSO, VOCÊ É UM FRESCO. AGORA DIGITE A MERDA DO NÚMERO QUE VOCÊ QUER:");
+                printf("Digite o elemento que você que colocar [0 - 999]:");
                 scanf("%d", &elem);
                 resultado = enfileira(elem);
             }

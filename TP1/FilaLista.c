@@ -54,30 +54,30 @@ int destroi_fila(){
 void imprime_fila(){
     int N = fila_tam();
     celula *i = fila->prox;
-    int j = 0 ;
+    int j = 0;
     if(N != 0){
         for(;j < N; j++){
             if(j==0) printf(" ------");
-            else if(j+1==N) printf("----- \n");
+            else if(j+1==N) printf("-----");
             else printf("------");
         }
+        printf("\n");
         for (; i != fila; i = i->prox){
             printf("| %03d ", i->dado);
         }
         printf("|\n");
         for(j=0;j < N; j++){
             if(j==0) printf(" ------");
-            else if(j+1==N) printf("----- \n");
+            else if(j+1==N) printf("-----");
             else printf("------");
         }
+        printf("\n");
         int p=0;
         int u = N;
         if(p!=u){
-
             for(j = 0; j<=N;j++){
-                if(j==0) printf("   ");
-                if(p==j) printf("p  ");
-                if(u==j+1) printf("   u");
+                if(p==j) printf("  p   ");
+                if(u==j) printf("   u");
                 if(j!= u && j!=p) printf("      ");
             }
             printf("\n");
