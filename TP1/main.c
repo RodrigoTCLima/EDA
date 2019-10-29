@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "FilaLista.h"
+#include "FilaVecF.h"
 
 int main(){
     char op;
@@ -7,6 +7,7 @@ int main(){
     cria_fila();
 
     while(1){
+        resultado = 1;
         printf("\033[2J\033[1;1H");
         printf("Tabela de comandos:\n1 - Inserir n elementos na fila\n2 - Remover n elementos da fila\n"
         "3 - Imprimir a fila\n4 - Reiniciar a fila\n5 - Sair\n");
@@ -14,26 +15,27 @@ int main(){
         if(op=='1'){
             printf("Digite quantos elementos você deseja inserir: ");
             scanf("%d", &qtdElem);
-            for(i=0; i < qtdElem && resultado == 1; i++){
+            for(i=1; i <= qtdElem && resultado == 1; i++){
                 scanf("%d", &elem);
                 resultado = enfileira(elem);
             }
             if(resultado == 0){
-                printf("%d elementos foram inseridos na fila, mas %d não couberam.\n", i, qtdElem-i);
+                printf("%d elementos foram inseridos na fila, mas %d não coube/couberam.\n", i-2, qtdElem-i+2);
+                scanf("%*c");
             }
         }
         else if(op == '2'){
             printf("Digite quantos elementos você deseja remover: ");
-            scanf("%d", &qtdElem);
+            scanf("%d%*c", &qtdElem);
             for(i=0; i<qtdElem && resultado == 1; i++){
                 resultado = desenfileira(&elem);
                 if(resultado == 1){
-                    printf("Elemento %d foi removido da fila.\n", elem);
-                    scanf("%*c");    
-                }
+                    printf("Elemento %d foi removido da fila.", elem);
+                    scanf("%*c");
+                }    
             }
             if(resultado == 0){
-                printf("Fila Vazia.\n");
+                printf("Fila Vazia.");
                 scanf("%*c");  
             }
         }

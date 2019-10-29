@@ -19,7 +19,7 @@ int enfileira(int x){
     return 1;
 }
 int desenfileira(int *x){
-    if(p==u) return 0;
+    if(p==u) {return 0;}
     *x = fila[p];
     p++;
     if(p==u){
@@ -47,5 +47,38 @@ int destroi_fila(){
     return 1;
 }
 void imprime_fila(){
-    
+    int j = 0;
+    for(;j < N; j++){
+        if(j==0) printf(" ------");
+        else if(j+1==N) printf("----- \n");
+        else printf("------");
+    }
+    for (j = 0; j < N; j++){
+        if(p>j || j>=u || p==u){
+            printf("|     ");
+        }
+        else printf("| %03d ", fila[j]);
+    }
+    printf("|\n");
+    for(j=0;j < N; j++){
+        if(j==0) printf(" ------");
+        else if(j+1==N) printf("----- \n");
+        else printf("------");
+    }
+    if(p!=u){
+        for(j = 0; j<=N;j++){
+            if(j==0) printf("   ");
+            if(p==j) printf("p  ");
+            if(u==j) printf("   u");
+            if(j!= u && j!=p) printf("      ");
+        }
+        printf("\n");
+    }
+    else{
+        for(j = 0; j<=N;j++){
+            if(p==j) printf("  p u ");
+            if(j!= u && j!=p) printf("      ");
+        }
+        printf("\n");
+    }
 }
