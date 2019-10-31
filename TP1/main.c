@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "FilaVecF.h"
+#include "FilaLista.h"
 
 int main(){
     char op;
@@ -18,6 +18,10 @@ int main(){
             for(i=1; i <= qtdElem && resultado == 1; i++){
                 printf("Digite o elemento que você que colocar [0 - 999]:");
                 scanf("%d", &elem);
+                while(elem > 999 || elem < 0){
+                    printf("Número inválido, por favor insira um número dentro dos parametros [0 - 999]: ");
+                    scanf("%d", &elem);
+                }
                 resultado = enfileira(elem);
             }
             if(resultado == 0){
