@@ -41,9 +41,6 @@ int fila_tam(){
     return u-p;
 }
 int destroi_fila(){
-    for(int i=N-1; i>0;i--){
-        free(fila[i]);
-    }
     free(fila);
     return 1;
 }
