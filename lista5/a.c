@@ -2,44 +2,48 @@
 #include <stdlib.h>
 typedef struct lista{
     char dado;
-    struct lista *prox;    
+    struct lista *prox;
 }lista;
-int inicializa(lista *l){
-    for(int i=0;i<30;i++){
+
+void inicializa(lista *l){
+    for(int i=0; i<32; i++)
         l[i].prox = NULL;
-    }
 }
-int colocar(lista *l, int tam, char lado){
-    lista *k = malloc(sizeof(lista));
-    k->prox = l[tam].prox;
-    k->dado = lado;
-    l[tam].prox = k;
-    return 1;
-}
-int ver(lista *l, int tam, char lado){
+
+int ver(lista *l, int tam, char lado, lista *k){
     lista *j = l[tam].prox;
-    lista *ant = &l[tam];
-    while(j!=NULL){
-        if(j->dado != lado){
-            ant->prox = j->prox;
-            free(j);
-            return 1;
-        }
-        ant = j;
-        j = j->prox;
+    if(j!=NULL && j->dado!=lado){
+        l[tam].prox = j->prox;
+        free(j);
+        return 1;
     }
-    if(colocar(l, tam, lado))
-    return 0;
+    else{
+        lista *p = malloc(sizeof(lista));
+        p->prox = k[tam].prox;
+        p->dado = lado;
+        k[tam].prox = p;
+        return 0;
+    }
 }
 
 int main(){
-    lista l[30];
-    inicializa(l);
+    lista e[32], d[32];
+    inicializa(e);
+    inicializa(d);
     int tam, qtd = 0;
     char lado;
-    scanf("%*d");
     while(scanf("%d %c", &tam, &lado) != EOF){
-        if(ver(l, tam-30, lado)) qtd++;
+        if(lado == 'E'){
+            if(ver(d, tam-30, lado, e)) {
+                qtd++;
+            }
+        }
+        else{
+            if(ver(e, tam-30, lado, d)) {
+                qtd++;
+            }
+        }
+            
     }
     printf("%d\n", qtd);
     return 0;
